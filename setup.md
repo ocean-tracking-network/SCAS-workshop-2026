@@ -6,7 +6,7 @@ title: Setup
 
 You will requre 1) all the correct programs, 2) all the listed R packages 3) the dataset and code. Instructions for all these are below.
 
-> ## Setup Checklist
+<!-- > ## Setup Checklist
 > You can use the following checklist to keep track of your progress. If you have trouble with any step of the process,
 > do not hesitate to contact us and we will help you solve it in advance of the workshop. 
 >
@@ -26,7 +26,7 @@ You will requre 1) all the correct programs, 2) all the listed R packages 3) the
 > 
 > **Network & Access (Only relevant if you are attending an in-person workshop)**
 > - I have connected to the correct Wi-Fi network.
-{: .callout}
+{: .callout} -->
 
 ### Please see the attached document for program instructions: - [Program Install Instructions.docx](/Resources/install_instructions.docx)
 -  R version: 3.6.x or newer (recommend 4.0.x) and RStudio
@@ -129,7 +129,7 @@ install.packages('ggspatial')
 
 # Dataset and Code
 
-<b>Once the above packages are installed</b>, you can download the datasets and code for this workshop from <b>[this link](https://github.com/ocean-tracking-network/glatos-workshop-2026/tree/master)</b>
+<b>Once the above packages are installed</b>, you can download the datasets and code for this workshop from <b>[this link](https://github.com/ocean-tracking-network/SCAS-workshop-2026/tree/master)</b>
 
 1. Select the GREEN "Code" button at the top and choose "Download ZIP"
 2. Unzip the folder and move to secure location on your computer (Documents, Desktop etc.)
