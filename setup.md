@@ -10,7 +10,7 @@ title: Setup
 
 ---
 
-## 1) Install R
+### 1) Install R
 
 1. Go to [https://cran.r-project.org/mirrors.html](https://cran.r-project.org/mirrors.html) and pick a USA mirror
 2. Download the installer for your OS:
@@ -20,9 +20,8 @@ title: Setup
 
 > **Recommended version:** R 4.0.x or newer
 
----
 
-## 2) Install RStudio
+### 2) Install RStudio
 
 1. Go to [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/)
 2. Download the **RStudio Desktop (Free)** version for your OS
@@ -31,9 +30,8 @@ title: Setup
 
 > Install R **before** RStudio so RStudio can find and link to it automatically.
 
----
 
-## 3) Install R Packages
+### 3) Install R Packages
 
 Open RStudio and run the install script below. **Run it line by line**, not all at once, this makes it easier to catch any errors.
  
@@ -67,9 +65,8 @@ install.packages("readxl")
 install.packages("viridis")
 ```
 
----
 
-## 4) Download Workshop Code and Data
+### 4) Download Workshop Code and Data
 
 Once packages are installed, download the workshop files from GitHub:
 
