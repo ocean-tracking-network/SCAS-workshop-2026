@@ -2,144 +2,93 @@
 title: Setup
 ---
 
-## Requirements
+## Before You Begin
 
-You will requre 1) all the correct programs, 2) all the listed R packages 3) the dataset and code. Instructions for all these are below.
+- You'll need a **laptop with admin rights** — some installs require it
+- A **strong internet connection** is recommended
+- Installation can take a while depending on your connection, do this ahead of time
 
-<!-- > ## Setup Checklist
-> You can use the following checklist to keep track of your progress. If you have trouble with any step of the process,
-> do not hesitate to contact us and we will help you solve it in advance of the workshop. 
->
->(NOTE FOR SITE DEVELOPERS: If the current workshop does not include the advanced lessons, RTools isn't necessary and the middle two entries in the software & environment checklist can be deleted.)
-> 
-> **Software & Environment**
-> - I have installed the latest version of R and RStudio. Note: Older versions may cause compatibility issues with some packages.
-> - (Windows Users Only) I have installed RTools. Note: RTools is required to build and install certain R packages on Windows.
-> - (Windows Users Only) I have confirmed that RTools is correctly added to my system's environment PATH variable. Note: This ensures RStudio can properly find and run them.
-> - I have run the setup script from this page, and installed all relevant packages
-> 
-> **Files & Resources**
-> - I have downloaded the correct data files and scripts from the official source. Note: for this workshop, the official source is [here](LINK TO REPOSITORY)
-> - The downloaded files are unzipped and saved in my RStudio instance's current working directory. Note: You can use `getwd()` in the RStudio console to check your current working directory and make sure your files are there. 
->
-> (NOTE FOR SITE DEVELOPERS: If appropriate, include a note in the list below for where Wi-Fi credentials can be found.)
-> 
-> **Network & Access (Only relevant if you are attending an in-person workshop)**
-> - I have connected to the correct Wi-Fi network.
-{: .callout} -->
+---
 
-### Please see the attached document for program instructions: - [Program Install Instructions.docx](/Resources/install_instructions.docx)
--  R version: 3.6.x or newer (recommend 4.0.x) and RStudio
--  Rtools (Windows users only) and GDAL are only required for the Advanced Telemetry Workshop
+## Step 1 — Install R
 
-Once all of the programs are installed, open RStudio and run the below package install scripts. It's best to run it line by line instead of all at once in case there are errors.
+1. Go to [https://cran.r-project.org/mirrors.html](https://cran.r-project.org/mirrors.html) and pick a USA mirror
+2. Download the installer for your OS:
+   - **Windows:** Click "Download R for Windows" → "base" → download the `.exe`
+   - **Mac:** Click "Download R for (Mac) OS X" → download the `.pkg`
+3. Run the installer. On Windows, choose **"Install as administrator"**. Default options are fine for both platforms.
 
-<b>Note:</b> When running through the installs, you may encounter a prompt asking you to upgrade dependent packages. Choosing Option `3: None`, works in most situations and will prevent upgrades of packages you weren't explicitly looking to upgrade.
+> **Recommended version:** R 4.0.x or newer
 
-### Beginner R Workshop Requirements
+---
+
+## Step 2 — Install RStudio
+
+1. Go to [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/)
+2. Download the **RStudio Desktop (Free)** version for your OS
+3. Run the installer with default options
+4. Open RStudio, you should see an active R console
+
+> Install R **before** RStudio so RStudio can find and link to it automatically.
+
+---
+
+## Step 3 — Install R Packages
+
+Open RStudio and run the install script below. **Run it line by line**, not all at once, this makes it easier to catch any errors.
+ 
+> Alternatively, once you've downloaded the workshop files (Step 4), you can just open **`setup.R`** from the folder and run it directly, it contains the same installs.
+ 
+> If prompted to upgrade dependent packages, choose **Option 3: None**. This avoids upgrading packages you didn't intend to touch.
 
 ```r
-
-# Tidyverse (data cleaning and arrangement)
+# Data cleaning and arrangement
 install.packages('tidyverse')
 
-# Nanoparquet (importing parquet files to dataframes)
+# Reading parquet files into dataframes
 install.packages('nanoparquet')
 
-# Lubridate - part of Tidyverse, improves the process of creating date objects
+# Better date handling (also part of Tidyverse)
 install.packages('lubridate')
 
-# GGmap - complimentary to ggplot2, which is in the Tidyverse
+# Map plotting (works alongside ggplot2)
 install.packages('ggmap')
-#This is a temporarily available API key you can use for plotting StadiaMaps in ggmap this workshop. You SHOULD NOT rely on this key being available after the workshop.
+
+# Temporary API key for StadiaMaps — valid during the workshop only
 ggmap::register_stadiamaps("b01d1235-69e8-49ea-b3bd-c35b42424b00")
 
-# Plotly - Interactive web-based data visualization
+# Interactive web-based charts
 install.packages('plotly')
 
-# ReadXL - reads Excel format
+# Reading Excel files
 install.packages("readxl")
 
-# Viridis - color scales in this package are easier to read by those with colorblindness, and print well in grey scale.
+# Colorblind-friendly and greyscale-compatible color scales
 install.packages("viridis")
 ```
 
-### Advanced Telemetry Workshop Requirements
-<b>Note:</b> When running through the installs, you may encounter a prompt asking you to upgrade dependent packages. Choosing Option `3: None`, works in most situations and will prevent upgrades of packages you weren't explicitly looking to upgrade.
+---
 
-```r
+## Step 4 — Download Workshop Code and Data
 
-# rgdal
-install.packages('rgdal')
-library(rgdal)
-rgdal::getGDALVersionInfo()
+Once packages are installed, download the workshop files from GitHub:
 
-# Tidyverse (data cleaning and arrangement)
-install.packages('tidyverse')
+**[https://github.com/ocean-tracking-network/SCAS-workshop-2026](https://github.com/ocean-tracking-network/SCAS-workshop-2026/tree/master)**
 
-# glatos - acoustic telemetry package that does filtering, vis, array simulation, etc.
-install.packages('remotes')
-library(remotes) 
-remotes::install_github('ocean-tracking-network/glatos')
+**Option A — Download ZIP (recommended for most people)**
+1. Click the green **"Code"** button → **"Download ZIP"**
+2. Unzip the folder and move it somewhere stable (Desktop, Documents, etc.)
+3. In RStudio, set your working directory to that folder:
+   ```r
+   setwd('/path/to/folder')
+   ```
 
-#Additional packages for mapping.
-install.packages('stringr')
-install.packages('mapview')
-install.packages('spdplyr')
-
-# Lubridate - part of Tidyverse, improves the process of creating date objects
-install.packages('lubridate')
-
-# GGmap - complimentary to ggplot2, which is in the Tidyverse
-install.packages('ggmap')
-
-#SP and Raster packages for mapping.
-install.packages('sp')
-install.packages('raster')
-
-# Install actel
-library(remotes)
-remotes::install_github("hugomflavio/actel", build_opts = c("--no-resave-data", "--no-manual"), build_vignettes = TRUE)
-
-# Install packages for building/displaying R Markdown
-install.packages('rmarkdown')
-install.packages('knitr', dependencies = TRUE)
-
-# Install additonal packages for `remora` lesson
-install.packages('readr')
-install.packages('sf')
-install.packages('stars')
-
-# Install remora
-install.packages('devtools')
-library(devtools)
-devtools::install_github('ocean-tracking-network/remora@workshop_ready', force=TRUE)
-
-# Install packages for animating detection data
-install.packages('remotes')
-library(remotes) 
-remotes::install_github("jmlondon/pathroutr")
-
-install.packages('plotly')
-install.packages('gganimate')
-install.packages('ggspatial')
-
-
+**Option B — Git clone**
+```bash
+git clone https://github.com/ocean-tracking-network/SCAS-workshop-2026.git
 ```
+Then set your working directory in RStudio as above.
 
-# Dataset and Code
-
-<b>Once the above packages are installed</b>, you can download the datasets and code for this workshop from <b>[this link](https://github.com/ocean-tracking-network/SCAS-workshop-2026/tree/master)</b>
-
-1. Select the GREEN "Code" button at the top and choose "Download ZIP"
-2. Unzip the folder and move to secure location on your computer (Documents, Desktop etc.)
-3. Copy the folder's path and use it to set your working directly in R using `setwd('<path-to-folder>')`.
-
-If you are familiar with Git and Github, feel free to clone this repository as you normally would, by running `git clone https://github.com/ocean-tracking-network/otn-workshop-base.git` in a terminal program and following from step `3` above.
-
-
-
-
-
+---
 
 {% include links.md %}
