@@ -4,7 +4,7 @@ title: Setup
 
 ## Before You Begin
 
-- You'll need a **laptop with admin rights** — some installs require it
+- You'll need a **laptop with admin rights** some installs require it
 - A **strong internet connection** is recommended
 - Installation can take a while depending on your connection, do this ahead of time
 
