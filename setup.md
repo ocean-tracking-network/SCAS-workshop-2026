@@ -70,9 +70,9 @@ install.packages("viridis")
 
 Once packages are installed, download the workshop files from GitHub:
 
-**[https://github.com/ocean-tracking-network/SCAS-workshop-2026](https://github.com/ocean-tracking-network/SCAS-workshop-2026/tree/master)**
+**[https://github.com/ocean-tracking-network/SCAS-workshop-2026/tree/master](https://github.com/ocean-tracking-network/SCAS-workshop-2026/tree/master)**
 
-**Option A — Download ZIP (recommended for most people)**
+**Option A: Download ZIP (recommended for most people)**
 1. Click the green **"Code"** button → **"Download ZIP"**
 2. Unzip the folder and move it somewhere stable (Desktop, Documents, etc.)
 3. In RStudio, set your working directory to that folder:
@@ -80,7 +80,7 @@ Once packages are installed, download the workshop files from GitHub:
    setwd('/path/to/folder')
    ```
 
-**Option B — Git clone**
+**Option B: Git clone**
 ```bash
 git clone https://github.com/ocean-tracking-network/SCAS-workshop-2026.git
 ```
