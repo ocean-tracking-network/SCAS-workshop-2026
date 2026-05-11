@@ -2,7 +2,7 @@
 title: Setup
 ---
 
-## Before You Begin
+### Before You Begin
 
 - You'll need a **laptop with admin rights** some installs require it
 - A **strong internet connection** is recommended
