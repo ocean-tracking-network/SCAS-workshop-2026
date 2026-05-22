@@ -29,34 +29,12 @@ library(lubridate)
 
 If you are following along with the workshop in the workshop repository, there should be a folder in 'data/' containing data corresponding to your node (at time of writing, FACT, ACT, GLATOS, or MigraMar). `glatos` can function with both GLATOS and OTN Node-formatted data, but the functions are different for each. Both, however, provide a marked performance boost over base R, and both ensure that the resulting data set will be compatible with the rest of the `glatos` framework.
 
-We'll start by combining our several data files into one master detection file, which `glatos` will be able to read.
+We'll start by downloading an example dataset.
 
 ~~~
-# First we need to create one detections file from all our detection extracts.
-library(utils)
-
-format <- cols( # Heres a col spec to use when reading in the files
-  .default = col_character(),
-  dateLastModified = col_date(format = "%Y-%m-%d"),
-  bottomDepth = col_double(),
-  receiverDepth = col_double(),
-  sensorName = col_character(),
-  sensorRaw = col_character(),
-  sensorValue = col_character(),
-  sensorUnit = col_character(),
-  dateCollectedUTC = col_character(), #col_datetime(format = "%Y-%m-%d %H:%M:%S"),
-  decimalLongitude = col_double(),
-  decimalLatitude = col_double()
+det_file <- system.file("extdata", "blue_shark_detections.csv",
+                        package = "glatos"
 )
-
-detections <- tibble()
-for (detfile in list.files('.', full.names = TRUE, pattern = "nsbs.*.zip")) {
-  print(detfile)
-  tmp_dets <- read_csv(detfile, col_types = format)
-  detections <- bind_rows(detections, tmp_dets)
-}
-
-write_csv(detections, 'all_dets.csv', append = FALSE)
 ~~~
 {:.language-r}
 
@@ -68,7 +46,8 @@ Remember: you can always check a function's documentation by typing a question m
 ?read_otn_detections
 
 # Save our detections file data into a dataframe called detections
-detections <- read_otn_detections('all_dets.csv')
+detections <- read_otn_detections(det_file)
+
 ~~~
 {: .language-r}
 
@@ -174,8 +153,7 @@ One other method we can use is to summarize by a subset of our animals as well. 
 # create a custom vector of Animal IDs to pass to the summary function
 # look only for these IDs when doing your summary
 
-tagged_fish <- c('NSBS-Nessie', 'NSBS-1250981-2019-09-06', 
-                                     'NSBS-1393342-2021-08-10', 'NSBS-1393332-2021-08-05')
+tagged_fish <- c('NSBS-Xena', 'NSBS-Hooker', 'NSBS-Alison')
 
 sum_animal_custom <- summarize_detections(det=detections_filtered,
                                           animals=tagged_fish,  # Supply the vector to the function

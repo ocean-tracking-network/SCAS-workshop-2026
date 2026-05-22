@@ -6,7 +6,6 @@ questions:
     - "How can I use glatos to plot my data?"
     - "What kinds of plots can I make with my data?"
 ---
-## ACT Node
 
 Now that we've cleaned and processed our data, we can use `glatos`' built-in plotting tools to make quick and effective visualizations out of it. One of the simplest visualizations is an abacus plot to display animal detections against the appropriate stations. To this end, `glatos` supplies a built-in, customizable `abacus_plot` function.
 
@@ -28,9 +27,9 @@ This is good, but you can see that the plot is cluttered. Rather than plotting o
 
 ~~~
 # pick a single fish to plot
-abacus_plot(detections_filtered[detections_filtered$animal_id== "NSBS-Nessie",],
+abacus_plot(detections_filtered[detections_filtered$animal_id== "NSBS-Xena",],
             location_col='station',
-            main="NSBS-Nessie Detections By Station")
+            main="NSBS-Xena Detections By Station")
 ~~~
 {: .language-r}
 
@@ -46,22 +45,22 @@ detections_filtered
 # We'll use raster to get a polygon to plot against
 library(geodata)
 
+library(geodata)
 CAN <- geodata::gadm("CANADA", level=1, path=".")
-NS <- CAN[CAN$NAME_1=="NOVA SCOTIA",]
+NS <- CAN[CAN$NAME_1=="Nova Scotia",]
 
 bubble_station <- detection_bubble_plot(detections_filtered,
-
-                                        background_ylim = c(38, 40), 
-                                        background_xlim = c(-77, -76),
+                                        background_ylim = c(43.4, 46),
+                                        background_xlim = c(-66, -62),
                                         map = NS,
                                         location_col = 'station',
                                         out_file = 'nsbs_bubbles_by_stations.png')
 bubble_station
 
 bubble_array <- detection_bubble_plot(detections_filtered,
-                                      background_ylim = c(38, 40),
-                                      background_xlim = c(-77, -76),
-                                      map = MD,
+                                      background_ylim = c(43.4, 46),
+                                      background_xlim = c(-66, -62),
+                                      map = NS,
                                       out_file = 'nsbs_bubbles_by_array.png')
 bubble_array
 ~~~
@@ -69,37 +68,4 @@ bubble_array
 
 These examples provide just a brief introduction to some of the plotting available in `glatos`.
 
-> ## Glatos NSBS Challenge
->
-> Challenge 1 ----
-> Create a bubble plot of that bay we zoomed in earlier. Set the bounding box using the provided nw + se cordinates, change the colour scale and
-> resize the points to be smaller. As a bonus, add points for the other receivers that don't have any detections.
-> Hint: ?detection_bubble_plot will help a lot
-> Here's some code to get you started
-> ~~~
-> nw <- c(38.75, -76.75) # given
-> se <- c(39, -76.25) # given
-> ~~~
-> {: .language-r}
->
-> > ## Solution
-> >
-> > ~~~
-> > nw <- c(38.75, -76.75) # given
-> > se <- c(39, -76.25) # given
-> >
-> > deploys <- read_otn_deployments('matos_FineToShare_stations_receivers_202104091205.csv') # For bonus
-> > bubble_challenge <- detection_bubble_plot(detections_filtered,
-> >                                      background_ylim = c(nw[1], se[1]),
-> >                                      background_xlim = c(nw[2], se[2]),
-> >                                      map = MD,
-> >                                      symbol_radius = 0.75,
-> >                                      location_col = 'station',
-> >                                      col_grad = c('white', 'green'),
-> >                                      receiver_locs = deploys, # For bonus
-> >                                      out_file = 'act_bubbles_challenge.png')
-> > ~~~
-> > {: .language-r}
-> > ![Bubble plot for detections on Lake Erie Stations](../Resources/act_bubbles_challenge.png)
-> {: .solution}
-{: .challenge}
+
