@@ -63,6 +63,12 @@ install.packages("readxl")
 
 # Colorblind-friendly and greyscale-compatible color scales
 install.packages("viridis")
+
+# glatos - acoustic telemetry package that does filtering, vis, array simulation, etc.
+install.packages('remotes')
+library(remotes) 
+remotes::install_github('ocean-tracking-network/glatos')
+
 ```
 
 
