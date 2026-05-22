@@ -21,8 +21,7 @@ events %>% group_by(animal_id) %>% summarise(count=n()) %>% arrange(desc(count))
 
 #In this case, we have already decided to use these animal IDs as the basis for our subset.
 
-subset_animals <- c('NSBS-Nessie', 'NSBS-1250981-2019-09-06', 
-                                     'NSBS-1393342-2021-08-10', 'NSBS-1393332-2021-08-05')
+subset_animals <- c('NSBS-Xena', 'NSBS-Hooker')
 events_subset <- events %>% filter(animal_id %in% subset_animals)
 
 events_subset
