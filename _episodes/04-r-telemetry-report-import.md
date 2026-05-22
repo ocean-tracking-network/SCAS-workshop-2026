@@ -9,8 +9,6 @@ questions:
 
 **NOTE:** this workshop has been update to align with OTN's 2025 Detection Extract Format. For older detection extracts, please see the this lesson: [Archived OTN Workshop](https://ocean-tracking-network.github.io/otn-workshop-2025-06/). 
 
-## OTN Node 
-
 
 ### Importing all the datasets
 Let's look at how we might implement a common telemetry workflow using Tidyverse libraries like `dplyr` and `ggplot2`. 

@@ -9,8 +9,6 @@ questions:
 
 **NOTE:** this workshop has been update to align with OTN's 2025 Detection Extract Format. For older detection extracts, please see the this lesson: [Archived OTN Workshop](https://ocean-tracking-network.github.io/otn-workshop-2025-06/). 
 
-## OTN Node
-
 ### Mapping our stations - Static map
 
 We can do the same exact thing with the deployment metadata from OUR project only!
